@@ -1,0 +1,1446 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root{
+    --primary-color: #f80;
+    --secondary-color: #00498d;
+    --dark-primary-color: #e07800;
+    --dark-secondary-color: #00315f;
+    --light-color: #e9e9e9;
+    --dark-color: #2c2c2c;
+}
+
+body{
+    font-family: "arial";
+    color: var(--dark-color);
+    max-width: 100vw; /* Garante que nenhum elemento ultrapasse a largura da tela */
+    overflow-x: hidden; /* Remove a rolagem horizontal */
+}
+
+a{
+    text-decoration: none;
+    color: unset;
+}
+
+button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* START Nav */
+/* START Nav */
+.nav{
+    background: linear-gradient(to right, var(--dark-secondary-color), var(--secondary-color)); /* Laranja para Amarelo */
+    padding: 2rem;
+    position: sticky;
+    top: 0;
+    left: 0;
+    box-shadow: 10px 0px 10px #685353;
+    z-index: 10;
+}
+
+.nav .inner-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 90%; /* Evita que elementos fiquem maiores que a tela */
+    margin: 0 auto; /* Centraliza corretamente */
+
+}
+.logo{
+    color: yellow;
+    font-size: 2.5rem;
+}
+
+.logo span{
+    color: rgb(255, 255, 255);
+}
+
+/* Estilo padrão do botão de menu (oculto em telas maiores) */
+
+/* Estilo do botão de menu */
+.menu-button {
+    position: fixed;
+    padding: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-button img {
+    width: 35px;
+    height: 35px;
+    position: flex;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navs-icon-container{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navs-icon-container svg{
+    height: 1.9rem;
+}
+
+.navs-icon-container .shopping-cart{
+    position: relative;
+    background-color: transparent;
+}
+
+.navs-icon-container .shopping-cart .products-count{
+    content: "";
+    position: absolute;
+    background-color: rgb(255, 0, 0);
+    width: 1.5rem;
+    height: 1.5rem;
+    bottom: -8px;
+    left: -8px;
+    border-radius: 50%;
+    color: #ffffff;
+    padding: 0.7rem;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-input-container{
+    display: flex;
+    align-items: center;
+    gap: 0.25s;
+    border-radius: 2px solid var(--dark-color);
+    padding: 0.5rem;
+    margin-right: 2rem;
+}
+
+.search-input-container input{
+    height: 2rem;
+    background-color: #ebebeb;
+    border-radius: 8px;
+    outline: none;
+}
+
+.search-input-container svg{
+    height: 1rem;
+    color: #070707;
+}
+nav ul li {
+    cursor: pointer; /* Adiciona o cursor de mão */
+    transition: all 0.2s;
+    padding: 0.5rem 1rem; /* Adiciona um espaçamento interno */
+    border: 3px solid white; /* Define a borda branca */
+    border-radius: 16px; /* Adiciona cantos arredondados */
+    color: white; /* Define a cor do texto */
+}
+
+nav ul li:hover {
+    transform: translateY(-4px);
+    font-weight: bold;
+    background-color: #ffffff; /* Muda o fundo ao passar o mouse */
+    color: #000; /* Muda a cor do texto ao passar o mouse */
+}
+
+.menu-button{
+    display: none;
+}
+
+/* 📌 TELAS MAIORES QUE 768px - Volta ao menu normal */
+/* Responsividade para telas grandes - >769px */
+@media (min-width: 769px) {
+    .menu-button {
+        display: none; /* Remove o botão do menu */
+    }
+
+    nav {
+        display: flex; /* Exibe o menu normal */
+    }
+
+    .mobile-menu {
+        display: none; /* Remove o menu lateral */
+    }
+
+    .search-input-container {
+        display: flex; /* Exibe a barra de pesquisa */
+    }
+}
+
+/* Responsividade para telas menores que 769px */
+@media (max-width: 768px) {
+    .menu-button {
+        display: flex; /* Exibe o botão */
+        position: fixed; /* Mantém no topo da tela */
+        left: 75%; /* Alinhado ao canto esquerdo */
+        top: 22px; /* Ajuste para o topo */
+        z-index: 1100; /* Garante que o botão fique acima de tudo */
+        padding: 8px 12px; /* Ajuste do tamanho */
+    }
+
+    .search-input-container {
+        display: none; /* Oculta a barra de pesquisa */
+    }
+
+    nav {
+        display: none; /* Oculta o menu normal */
+    }
+
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Inicialmente fora da tela */
+        width: 280px !important;
+        height: 50%; /* Ocupa toda a altura da tela */
+        background: linear-gradient(135deg, #e07800, #ff8f10);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        align-items: center;
+        text-align: center;
+        transition: left 0.3s ease;
+        z-index: 1000;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Quando o menu for ativado */
+    .mobile-menu.show {
+        left: 0;
+        color: #000000;
+        font-size: 13px;
+        font-weight: bold;
+        
+     
+    }
+
+    .mobile-menu span {
+        color: rgb(255, 255, 255);
+        font-size: 1.3rem;
+       
+
+    }
+
+    .mobile-menu ul {
+        list-style: none;
+        padding: 20px;
+        margin: 0;
+
+    }
+
+    .mobile-menu ul li {
+        text-align: center;
+        border-radius: 10px;
+        background-color: #ffffff;
+        width: 116%;
+        margin: 1.8rem 0;
+        font-size: 1.6rem;
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .mobile-menu ul li:hover {
+        font-weight: bold;
+        color: #ffa600;
+    }
+
+    .nav .logo {
+        font-size: 1.5rem;
+    }
+
+    /* Produto do primeira Lista */
+    .product-list {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Garante 2 produtos por linha */
+        gap: 1rem !important;
+        text-align: center !important;
+        padding-bottom: 2rem !important;
+        justify-content: center !important;
+        margin: 0 auto !important;
+    }
+
+      /* Preço do produto */
+      .product-price {
+        font-size: 1.2rem !important;
+        font-weight: bold;
+    }
+
+/* Ajuste das imagens dos produtos */
+.product-image {
+    display: block !important; /* Remove possíveis margens automáticas */
+    margin: 0 auto !important; /* Centraliza horizontalmente */
+    width: 180px !important;
+    height: 180px !important;
+    object-fit: contain !important;
+}
+}
+/* Responsividade para telas menores que 480px */
+/* Responsividade para telas menores que 480px */
+@media (max-width: 450px) {
+    html, body {
+        overflow-x: hidden;
+    }
+    
+    .nav {
+        position: fixed;
+        width: 100%; /* Ocupa toda a largura da tela */
+    }
+    
+    .menu-button {
+        position: absolute; /* Fica fixo dentro da .nav */
+        left: 64%; /* Alinha ao lado direito do menu */
+        top: 50%; /* Centraliza verticalmente */
+        transform: translateY(-50%); /* Ajuste fino para centralizar */
+        z-index: 1000; /* Mantém acima de outros elementos */
+    }
+    
+        .mobile-menu {
+            width: 220px;
+        }
+
+    .product {
+        padding: 1rem !important;
+        border: 1px solid #000000 !important;
+        background-color: #DCDCDC !important;
+        border-radius: 8px !important;
+        display: flex !important;
+        flex-direction: column !important; 
+    }
+    
+    .product-list {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(100px, 1fr)) !important; /* Mantém o tamanho proporcional */
+        gap: 1rem !important;
+        text-align: center;
+        padding-bottom: 2rem;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+     /* Ajuste das imagens dos produtos com apenas 1 produto por linha */
+     .product-image {
+        display: block !important; /* Remove possíveis margens automáticas */
+        margin: 0 auto !important; /* Centraliza horizontalmente */
+        width: 275px !important;
+        height: auto;
+        border-radius: 100px !important;
+        object-fit: contain !important;
+    }
+    
+    .section-title h3 {
+        text-align: center;
+        font-size: 1.8rem;
+        margin-top: -50px !important;
+        margin-bottom: 20px !important; /* Espaço abaixo do título */
+    }
+
+      /* Nome do produto */
+      .product-name {
+        font-size: 1rem;
+    }
+
+    /* Preço do produto */
+    .product-price {
+        font-size: 1.2rem !important;
+        font-weight: bold;
+    }
+
+    /* Ofertas em destaque */
+    .product-offer {
+        font-size: 0.9rem;
+        color: rgb(255, 0, 0);
+        font-weight: bold;
+    }
+
+    /* Ajuste das estrelas de avaliação */
+    .product-rating {
+        font-size: 1.6rem;
+    }
+
+    /* Ajuste dos botões */
+    .btn-icon {
+        font-size: 1rem !important;
+        padding: 0.4rem 0.7rem !important;
+    }
+
+    /* Garantir que os preços e ofertas fiquem alinhados corretamente */
+    .product-price-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* EDITANDO CARRINHO DE COMPRAS*/
+      /* COMEÇOOOOOOOO Sidebar Cart Responsivo */
+      .sidebar-cart {
+        max-width: 100% !important; /* Ocupa toda a tela em dispositivos pequenos */
+    }
+
+    .sidebar-product {
+        max-width: 380px !important; /* Reduz o tamanho para caber melhor */
+        padding: 8px !important;
+    }
+
+    .sidebar-product img {
+        max-width: 340px; /* Ajusta o tamanho da imagem */
+        height: 350px; /* Mantém uma altura fixa */
+    }
+    
+    .sidebar-cart .product.name  {
+        color: #ff0000 !important;
+        text-align: translateX(-20px) !important;
+        position: fixed !important;
+        right: 0 !important;
+    }
+
+    .sidebar-cart .top button,
+    .sidebar-cart .sidebar-product button {
+    color: #ffffff;
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    background-color: #ff0000;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    transform: translateX(-30px) !important; /* Move a imagem 10px para a esquerda */
+
+}
+
+.sidebar-cart .sidebar-product .details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Botões de quantidade */
+.sidebar-cart .sidebar-product .quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-direction: row;
+}
+
+
+/* Estilizando o nome 'Total Soma' */
+.price-sum b {
+    color: #ffffff; /* Cor do nome 'Total Soma' */
+    font-size: 1rem; /* Aumenta o tamanho da fonte do nome */
+}
+
+/* Estilizando o valor total do produto */
+.price-sum {
+    font-size: 1.3rem !important; /* Aumenta o tamanho da fonte do valor */
+    font-weight: bold; /* Deixa o valor em negrito */
+    color: #ffffff !important; /* Cor do valor total */
+    transform: translateX(-80px); /* Move o valor total 20px para a esquerda */
+    margin-top: -25px;    
+}
+.sidebar-cart .sidebar-product .quantity-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #00315f, #125492) !important;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    cursor: pointer;
+    border: none;
+    margin-top: 50px !important;
+    transform: translateX(-90px) !important; /* Move os botões de + e - */
+}
+
+.sidebar-cart .sidebar-product .quantity-input {
+    width: 70px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.4rem;
+    margin-top: 70px !important;
+    transform: translateX(-90px) !important; /* Move a imagem 10px para a esquerda */
+}
+.sidebar-cart .sidebar-product img {
+    height: 175px !important;
+    margin-bottom: -50px !important;
+    width: 180px !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+    transform: translateX(-110px) !important; /* Move a imagem 10px para a esquerda */
+}
+
+/* FORMULARIO DE PAGAMENTO COMPRAS */
+.column img {
+    width: 105% !important;
+    filter: drop-shadow(0 0 1px #ffffff);
+    align-items: auto;
+  }
+
+.cart-summary {
+    margin-top: 30px !important;
+    text-align: center; /* Centraliza o texto */
+    padding: 1rem;
+    margin: 0 auto; /* Garante que o container esteja centralizado */
+    display: flex; 
+    flex-direction: column; /* Mantém os elementos um abaixo do outro */
+    align-items: center; /* Centraliza os elementos dentro do container */
+    justify-content: center; /* Mantém o conteúdo bem distribuído */
+}
+
+    .products-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .product-item {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 1rem !important;
+        border-radius: 10px !important;
+        width: 100% !important; /* Garante que ocupa toda a largura do container */
+        max-width: 350px !important; /* Aumenta a largura máxima do container */
+        height: auto !important; /* Ajuste automático da altura */
+        background-color: #e9e9e9; /* Caso queira garantir o fundo cinza */
+        margin: 1rem 0; /* Adiciona um espaço entre os itens */
+    }
+    .product-imagee {
+        width: 320px !important; /* Ajusta para um tamanho mais uniforme */
+        height: 280px !important;
+        object-fit: contain !important;
+        display: block !important;
+        margin: 1rem auto 1.5rem auto !important; /* Aumenta o espaço abaixo da imagem */
+    }
+    
+    .column img {
+        height: 50px !important;
+        filter: drop-shadow(0 0 1px #ffffff);
+        align-items: auto !important;
+      }
+
+    .product-details {
+        text-align: center;
+    }
+
+    .product-namee {
+        font-size: 1.3rem !important;
+        font-weight: bold !important;
+    }
+
+    .product-pricee {
+        font-size: 1rem !important;
+        font-weight: bold;
+    }
+
+    .product-installmentss {
+        font-size: 0.9rem;
+        color: #555;
+    }
+
+    .cart-total {
+        margin-top: 1rem !important;
+        font-size: 1.2rem !important;
+        font-weight: bold !important;
+    }
+ /* hedader */
+    .header-background img {
+        position: absolute; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 110%;
+        object-fit: cover; /* Ajusta a imagem sem distorção */
+        z-index: -1; /* Mantém a imagem no fundo */
+      }
+      header {
+        padding: 1rem 1rem; /* Reduzindo padding geral */
+        overflow: hidden;
+        width: 100%;
+    }
+    
+    header .inner-content {
+        display: flex; /* Usa flexbox para organizar o layout */
+        flex-direction: column; /* Alinha elementos verticalmente */
+        gap: 1.5rem; /* Espaçamento entre elementos */
+        padding: 1.5rem 1rem; /* Ajuste de padding interno */
+    }
+    
+    header .left-side h1 {
+        color: hsl(0, 0%, 100%);
+        font-size: 3.0rem;
+        margin-top: 50px;
+      }
+
+    header .right-side img {
+        max-width: 100%; /* Ajusta largura da imagem */
+        height: auto; /* Mantém proporções */
+        margin: 0 auto; /* Centraliza horizontalmente */
+        display: flex; /* Garante visibilidade */
+        position: relative;    
+    }
+
+      /* Logo Footer*/
+    .logo-footer p {
+        font-size: 1.9rem; /* Define o tamanho do texto */
+        margin: 0.5rem 0; /* Espaçamento acima e abaixo */
+        text-align: center !important; /* Centraliza o texto */
+        transform: translateX(-50px) !important; /* Move os botões de + e - */
+    }
+    
+    
+}
+/* START HEADER */
+/* Adicione isso ao seu CSS */
+/* Estilo geral do header */
+header {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  .header-background img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover; /* Ajusta a imagem sem distorção */
+    z-index: -1; /* Mantém a imagem no fundo */
+  }
+  
+  header .inner-content { 
+    max-width: 1600px;
+    margin: 0 auto; /* Centraliza horizontalmente */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    padding: 0rem;
+    gap: 3rem; 
+  }
+  
+  header .left-side h2 {
+    font-size: 2.0rem;
+    color: rgb(255, 255, 255);
+    margin-top: 0px;
+  }
+  
+  header .left-side p {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    font-weight: bold; /* Torna o texto mais forte */
+    color: #ffffff;
+  }
+  
+  header .left-side h1{
+    margin-top: 30px;
+  }
+  .hero-container {
+    text-align: center;
+    padding: 50px 20px;
+    background: none;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+  }
+  
+  .hero-container p {
+    font-size: 2.2rem;
+    color: rgb(255, 255, 255);
+  }
+  
+  .hero-container .typed {
+    color: #007bff; /* Azul destaque */
+    font-weight: bold;
+  }
+  
+  .see-more-btn {
+    background-color: rgb(80, 77, 77);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+    display: flex;
+    max-width: 130px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .see-more-btn:hover {
+    background-color: gray;
+    max-width: 200px;
+  }
+  
+  header .right-side img {
+    width: 100%;
+    background-color: transparent; /* Garantia de que o fundo da imagem em si seja transparente */
+  }
+  
+  /* Barra de Pesquisa */
+  .search-container {
+    display: flex;
+    align-items: center;
+    margin-top: 80px;
+    margin-bottom: 10px;
+    max-width: 450px;
+    border-radius: 30px; /* Bordas arredondadas combinando com o contêiner */
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    overflow: hidden; /* Garante que os elementos arredondados fiquem dentro do contêiner */
+  }
+  
+  .search-container input {
+    flex: 1; /* Ocupa o máximo de espaço disponível */
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    outline: none; /* Remove o contorno padrão ao clicar */
+    border: none; /* Remove bordas padrão */
+    background: none; /* Transparente para combinar com o fundo */
+  }
+  
+  .search-container button {
+    padding: 0.8rem 1.3rem; /* Preenchimento ajustado */
+    font-size: 1rem;
+    border: none; /* Remove bordas padrão */
+    background-color: var(--primary-color); /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transições suaves */
+    border-left: 1px solid rgba(0, 0, 0, 0.1); /* Linha divisória sutil */
+  }
+  
+  /* Efeito ao passar o mouse no botão */
+  .search-container button:hover {
+    background-color: var(--dark-primary-color); /* Cor mais escura no hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Efeito de elevação */
+  }
+  
+  .color1 {
+    color: yellow; /* Azul, por exemplo */
+  }
+  
+  .color2 {
+    color: #f80; /* Vermelho, por exemplo */
+  }
+  
+
+/* Layout geral */
+.page-inner-content {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1rem;
+}
+
+/* Lista de produtos com ajuste de grid */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); /* Tamanho padrão com ajuste automático */
+    gap: 1.5rem;
+    text-align: center;
+    padding-bottom: 2rem;
+    justify-content: center; /* Centraliza a lista de produtos horizontalmente */
+    margin: 0 auto;
+}
+
+/* Estilos do produto */
+.product {
+    padding: 1rem;
+    border: 1px solid #1a1919;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ajuste do tamanho das imagens do produto */
+.product img {
+    width: 100%; /* Garante que a imagem ocupe toda a largura do contêiner */
+    height: 250px; /* Define uma altura fixa para uniformizar */
+    object-fit: cover; /* Mantém o aspecto da imagem e preenche o contêiner */
+    border-radius: 8px; /* Mantém o estilo com bordas arredondadas */
+}
+
+/* Nome do produto centralizado */
+.product-name {
+    font-weight: bold;
+    margin-top: 0.4rem;
+    text-align: center; /* Centraliza o nome do produto */
+}
+
+/* Preço do produto centralizado */
+.product-price {
+    text-align: center; /* Centraliza o preço do produto */
+}
+
+.product-price span {
+    font-weight: bold;
+    margin-top: 0.4rem;
+
+}
+
+/* Estilos para estrelas de avaliação */
+.product-rating {
+    font-size: 1.8rem;
+    text-align: center; /* Centraliza a avaliação do produto */
+    color: #00498d;
+}
+
+/* Botões padrões */
+.btn-icon{
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-color); /* Cor de fundo padrão */
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    justify-content: center; /* Alinha o texto e o ícone ao centro */
+}
+
+.btn-icon:hover {
+    background-color: rgb(0, 255, 0); /* Cor de fundo ao passar o mouse */
+}
+
+/* Botão específico para adicionar ao carrinho */
+.add-to-cart-btn {
+    background-color: var(--secondary-color); /* Cor específica para o botão "Adicionar ao Carrinho" */
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--dark-secondary-color); /* Cor ao passar o mouse no botão "Adicionar ao Carrinho" */
+}
+
+/* Layout e organização dos botões na seção adicional */
+.product .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+    .section-title {
+        padding-bottom: 1rem;
+        margin: 25rem;
+        margin-bottom: 2rem; /* Espaço abaixo do título */
+    }
+    
+    .section-title h3 {
+        text-align: center;
+        font-size: 1.8rem;
+        margin-top: 100px; /* Espaço abaixo do título */
+    }
+    
+    .section-title .underline {
+        width: 180px;
+        height: 4px;
+        background-color: var(--secondary-color);
+        margin: 1px auto 1px auto; /* Espaço maior após a linha */
+    }
+
+    .products-container {
+        margin-top: 15rem; 
+    }
+    
+
+    .section-titlee {
+        padding-bottom: 1rem;
+        margin-top: 2rem;
+        margin-bottom: 3rem; /* Espaço abaixo do título */
+    }
+    
+    .section-titlee h3 {
+        text-align: center;
+        font-size: 1.8rem;
+        margin-bottom: 1px; /* Espaço abaixo do título */
+    }
+    
+    .section-titlee .underline {
+        width: 170px;
+        height: 4px;
+        background-color: var(--secondary-color);
+        margin: 1px auto 1px auto; /* Espaço maior após a linha */
+    }
+
+/*END PRODUCT*/
+    
+/* START: EXCLUSIVE SECTION */
+.exclusive-section {
+    background: linear-gradient(to right, #ff7f00, #ffcc00); /* Laranja para Amarelo */
+}
+
+.exclusive-section .content{
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    flex-direction: row-reverse;
+    padding: 5rem 1rem;
+}
+
+.exclusive-section .content .left-side{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.exclusive-section .content .right-sidee img{
+    max-width: 470px;
+    border-radius: 50px;
+    transform: translateX(-50px); /* Move os botões de + e - */
+
+}
+
+.see-more-btnn{
+    background-color: var(--dark-primary-color);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+    display: flex;
+    max-width: 130px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.see-more-btnn:hover{
+    background-color: var(--primary-color);
+    max-width: 200px;
+}
+/* END : EXCLUSIVE SECTION */ 
+
+/* START TESTIMONIALS */
+.testimonialss{
+    display: flex;
+    padding: 4rem 1rem;
+    justify-content: space-evenly;
+}
+
+.testimoniall{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 30%;
+    text-align: center;
+    box-shadow: 0px 0px 15px #afafaf;
+    padding: 1rem;
+    border-radius: 1rem;
+    transition: all 0.2s;
+    gap: 0.7rem;
+}
+
+.testimoniall:hover{
+    transform: translateY(-5px);
+}
+
+.testimoniall p:first-child{
+    font-weight: bold;
+    font-size: 5rem;
+    color: var(--dark-primary-color);
+    margin-top: 3rem;
+    line-height: 3rem;
+}
+
+/* Estilo geral dos Testimonials */
+.testimonialss {
+    background-color: var(--dark-primary-color);
+    display: flex;
+    flex-wrap: wrap; /* Ajusta para telas menores */
+    padding: 4rem 1rem;
+    justify-content: center; /* Centraliza todos os cards */
+    gap: 10rem;
+}
+
+.testimoniall {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 30%; /* Adapta o tamanho */
+    max-width: 350px;
+    box-shadow: 0px 0px 15px var(--shadow-color);
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    gap: 0.7rem;
+    background-color: #ffffff; /* Fundo branco para destaque */
+}
+
+.testimoniall:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 25px var(--shadow-color);
+}
+
+.testimoniall p:first-child {
+    font-weight: bold;
+    font-size: 5rem;
+    color: var(--dark-primary-color);
+    margin-top: 3rem;
+    line-height: 3rem;
+}
+
+
+/* START FOOTER */
+/* Estilo geral do footer */
+footer {
+        background-color: var(--dark-secondary-color); /* Fundo vermelho */
+        color: #ffffff;
+        position: relative; /* Use 'relative' ou 'absolute' conforme necessário */
+        width: 100%; /* Garante que o footer ocupe toda a largura */
+        margin: 0; /* Remove qualquer margem */
+        padding: 4rem 0; /* Adiciona espaçamento interno apenas vertical */
+        box-sizing: border-box; /* Inclui padding no cálculo da largura */
+    }
+    
+    footer .content {
+        display: flex;
+        gap: 1rem;
+        justify-content: center; /* Distribui espaço entre os elementos */
+        align-items: center; /* Centraliza o conteúdo no eixo vertical */
+        max-width: 1400px; /* Largura máxima do conteúdo */
+        margin: 0 auto; /* Centraliza o conteúdo dentro do footer */
+        padding: 0 1rem; /* Espaçamento interno horizontal */
+    }
+    
+    .download-options {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Alinha os itens verticalmente */
+        gap: 1rem; /* Espaçamento entre o título e o conteúdo */
+        padding-right: 4rem;
+    }
+    
+    .download-options>p:first-child {
+        color: #ffffff;
+        font-weight: bold;
+        text-align: left;
+    }
+    
+    .download-options>div {
+        display: flex;
+        flex-direction: column; /* Coloca as imagens em uma coluna */
+        gap: 1rem; /* Espaçamento entre as imagens */
+        align-items: center; /* Centraliza as imagens horizontalmente */
+    }
+    
+    .download-options>div img {
+        max-width: 200px;
+        border-radius: 2.5rem; /* Adiciona um detalhe nas bordas */
+    }
+    
+    .logo-footer {
+        display: flex; /* Ativa o Flexbox */
+        flex-direction: column; /* Organiza os elementos verticalmente */
+        align-items: center; /* Centraliza horizontalmente */
+        justify-content: center; /* Centraliza verticalmente */
+        text-align: center; /* Alinha o texto no meio */
+        width: 100%; /* Garante que o contêiner ocupe toda a largura */
+    }
+    
+    .logo-footer h1 {
+        font-size: 3rem; /* Ajusta o tamanho do título */
+        margin: 0.5rem; /* Espaçamento entre os elementos */
+        text-align: center; /* Centraliza o texto */
+        width: 50%;
+        transform: translateX(-50px); /* Move os botões de + e - */
+
+    }
+    
+    .logo-footer p {
+        font-size: 1.9rem; /* Define o tamanho do texto */
+        margin: 0.5rem 0; /* Espaçamento acima e abaixo */
+        text-align: center; /* Centraliza o texto */
+        transform: translateX(-50px); /* Move os botões de + e - */
+    }
+    
+    .logoo {
+        font-size: 0.5rem; /* Tamanho do título */
+        color: yellow; /* Cor do título */
+        margin: 0; /* Remove margens padrão */
+        text-align: center; /* Centraliza o texto */
+    }
+    
+    .logoo span {
+        color: rgb(255, 255, 255); /* Cor para o destaque */
+    }
+  
+
+    /* Links do footer */
+    footer .links h3 {
+        margin-bottom: 0.8rem;
+        color: rgb(0, 0, 0);
+    }
+    
+    footer .links ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0;
+    }
+    
+    
+hr {
+    position: absolute; /* Posiciona o hr relativo ao footer */
+    bottom: 2rem; /* Fica logo acima do copyright */
+    left: 50%; /* Posiciona no meio horizontalmente */
+    transform: translateX(-50%); /* Centraliza corrigindo o deslocamento */
+    margin: 0; /* Remove margens adicionais */
+    width: 80%; /* Ajusta a largura do hr */
+    border-color: var(text-color); /* Cor consistente */
+    border-width: 1px; /* Ajuste na espessura */
+}
+
+.copyright {
+    padding: 0.5rem 0; /* Espaço interno pequeno */
+    font-size: 0.9rem;
+    text-align: center;
+    position: absolute; /* Posicionamento fixado dentro do footer */
+    bottom: 0; /* Encosta na parte inferior */
+    width: 100%; /* Garante que ocupe toda a largura */
+
+}
+
+
+
+/*  END FOOTER */ 
+
+/* START : MEDIA */
+@media (max-width: 768px) {
+    .section-title h3 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-top: 4rem;
+            margin-bottom: 1.0rem; /* Espaço abaixo do título */
+    }
+
+    .section-title {
+        padding-bottom: 1rem;
+        margin-top: 1rem;
+        margin-bottom: 2rem; /* Espaço abaixo do título */
+    }
+
+    .product .name, 
+    .product .price, 
+    .product .rating,
+    .testimoniall .rating{
+        max-height: 1rem;
+        overflow: hidden;
+        font-size: 0.8rem;
+    }
+
+    .exclusive-section .content{
+        flex-direction: column-reverse;
+    }
+
+    .exclusive-section .content .right-sidee img{
+        max-width: 250px;
+        margin-bottom: 1srem;
+    }
+
+    .testimonialss{
+        align-items: center;
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: auto;
+        margin-inline: auto;
+    }
+
+    .logo-footer {
+        width: 100%; /* Garante que ocupe toda a largura em dispositivos menores */
+    }
+
+    .logo-footer h1 {
+        font-size: 2.0rem; /* Ajusta o tamanho do título */
+        text-align: center; /* Centraliza o título */
+    }
+
+    .logo-footer p {
+        font-size: 0.9rem; /* Reduz o tamanho do texto em telas pequenas */
+        max-width: 80%; /* Permite mais largura para o texto */
+        text-align: center;
+    }
+
+    footer .content{
+        display: inline;
+    }
+
+    footer .content>div{
+        padding: 1rem;
+    }
+
+    .download-options>div img{
+        width: 130px;
+    }
+
+    .copyright{
+        font-size: 0.8rem;
+    }
+
+    footer .links ul,
+    footer .links h3{
+        text-align: center;
+    }
+
+    .imagensMeio{
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 400px;
+        margin-inline: auto;
+    }
+}
+
+/* START SIDEBAR */
+.sidebar-cart {
+    background: linear-gradient(40deg, #007bff, #00315f);
+    color: #ffffff;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 11;
+    border-radius: 10px;
+    width: 100%;
+    height: 80%;
+    max-width: 500px;
+    padding: 2rem;
+    box-shadow: 5px 5px 50px var(--dark-color);
+    overflow-x: hidden; /* Remover rolagem horizontal se necessário */
+    overflow-y: auto; /* Adiciona rolagem vertical se necessário */
+    display: none;
+}
+
+.sidebar-cart::-webkit-scrollbar {
+    width: 12px;
+}
+
+.sidebar-cart::-webkit-scrollbar-horizontal {
+    height: 8px;
+}
+
+.sidebar-cart::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 10px;
+}
+
+.sidebar-cart::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+.sidebar-cart .sidebar-product {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--light-color);
+}
+
+.sidebar-cart .top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.sidebar-cart .top button,
+.sidebar-cart .sidebar-product button {
+    color: #ffffff;
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    background-color: #ff0000;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-cart .sidebar-product .details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Botões de quantidade */
+.sidebar-cart .sidebar-product .quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-direction: row;
+}
+
+.sidebar-cart .sidebar-product .quantity-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #413939, #a1a1a1);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    cursor: pointer;
+    border: none;
+    transform: translateX(-23px); /* Move os botões de + e - */
+
+}
+
+.sidebar-cart .sidebar-product .quantity-input {
+    width: 70px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.4rem;
+    transform: translateX(-23px); /* Move os botões de + e - */
+
+}
+
+.sidebar-cart .sidebar-product img {
+    height: 180px;
+    width: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    transform: translateX(-25px); /* Move a imagem 10px para a esquerda */
+
+}
+
+.sidebar-cart .total-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    gap: 1rem;
+    margin-bottom: 0;
+    margin-block: 1rem;
+    position: -webkit-sticky;
+    position: sticky;
+    background: linear-gradient(45deg, #00315f, #007bff);
+    color: rgb(255, 255, 255);
+    padding: 2rem;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-cart .Menu-cart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff; /* Cor da mensagem */
+    margin-top: auto; /* Empurra a mensagem para baixo */
+    text-align: auto;
+    padding: 200px 0;
+}
+.total-container b{
+    color: #ffffff;
+}
+
+.sidebar-cart .left-side {
+    display: flex;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.sidebar-cart .left-side .details {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-cart .left-side .details p {
+    font-size: 0.8rem;
+}
+
+.btn-cart {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-color);
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    font-size: 17px;
+    color: #fff;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.btn-cart:hover {
+    background: var(--dark-primary-color);
+}
+
+
+/* Ajuste para o campo de quantidade */
+.sidebar-cart .left-side input {
+    width: 100px; /* Reduz a largura */
+    margin-top: 0.25rem;
+    margin-bottom: 1.25rem;
+    padding: 0.3rem; /* Reduz o preenchimento interno */
+    font-size: 0.9rem; /* Ajusta o tamanho da fonte */
+    text-align: center; /* Centraliza o texto */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.sidebar-cart.show {
+    display: block;
+}
+
+/* IMAGENS DE SUB TITULO */
+.imagensMeio {
+    display: flex;
+    padding: 1rem 1rem;
+    justify-content: space-evenly;
+    gap: 3rem;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.imagensMeio2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-basis: auto;
+    text-align: center;
+    box-shadow: none;
+    padding: 0;
+    border-radius: none;
+    transition: all 0.2s;
+    gap: 1.7rem;
+}
+
+.imagensMeio2:hover {
+    transform: translateY(-5px);
+}
+
+.imagensMeio2 img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.imagensMeio2 img:hover {
+    transform: scale(1.1);
+}

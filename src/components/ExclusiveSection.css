@@ -1,0 +1,163 @@
+/* Exclusivo para a seção de produtos patrocinados */
+.additional-images-section {
+  font-size: 1.8rem;
+  margin-top: 20px;
+  text-align: center; /* Centraliza o título da seção */
+}
+
+.section-header h3 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  padding-bottom: 0rem;
+  margin-top: 3rem;
+}
+
+.section-header .bar {
+  width: 180px;
+  height: 4px;
+  background-color: #00498d;
+  margin: 4px auto 0 auto;
+}
+
+/* Container para as imagens adicionais */
+.additionalImages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 270px);
+  place-content: center;
+  gap: 1.5rem;
+  padding-bottom: 2rem; /* Centraliza os produtos */
+  margin-top: 2rem;
+}
+
+/* Cada produto na seção adicional */
+.sponsored-product {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 270px;
+}
+
+/* Garantir que as imagens na seção adicional não ultrapassem o limite do contêiner */
+.sponsored-product-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.sponsored-product-name {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.sponsored-product-rating {
+  color: #00498d;
+}
+
+.linha-sobre-texto {
+  text-decoration: line-through;
+}
+
+.sponsored-product-price {
+  font-size: 16px;
+  color: #000000;
+}
+
+.linha-sobre-texto{
+  color: #ff0000;
+}
+/* Botões na seção adicional */
+.sponsored-product-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Estilo base para os botões com ícones */
+.sponsored-btn-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.8rem;
+  background-color: green; /* Cor do botão */
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.sponsored-btn-icon:hover {
+  background-color: rgb(0, 236, 0);
+}
+
+.sponsored-btn-icon span {
+  margin-right: 15px;
+}
+
+/* Estilo específico para o botão "Adicionar ao Carrinho" */
+.sponsored-add-to-cart-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem;
+  background-color: #00498d; /* Cor específica para "Adicionar ao Carrinho" */
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s;
+  gap: 0.25rem;
+}
+
+.sponsored-add-to-cart-btn:hover {
+  background-color: var(--dark-secondary-color);
+}
+
+.sponsored-add-to-cart-btn span {
+  margin-right: 14px; /* Mantém o span alinhado à esquerda */
+}
+
+/* Responsividade */
+
+/* Estilo para telas grandes */
+@media (min-width: 1200px) {
+  .additionalImages {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  .sponsored-product {
+    max-width: 300px;
+  }
+}
+
+/* Estilo para telas médias */
+@media (min-width: 800px) and (max-width: 1199px) {
+  .additionalImages {
+    grid-template-columns: repeat(3, 1fr); /* Exibe 3 produtos por linha */
+  }
+}
+
+/* Estilo para telas menores (tablets) */
+@media (max-width: 799px) {
+  .additionalImages {
+    grid-template-columns: repeat(2, 1fr); /* Exibe 2 produtos por linha */
+  }
+  .sponsored-product {
+    max-width: 100%;
+  }
+}
+
+/* Estilo para telas de celulares */
+@media (max-width: 480px) {
+  .additionalImages {
+    grid-template-columns: 1fr; /* Exibe 1 produto por linha */
+  }
+  .sponsored-product {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,281 @@
+/* Reset de estilos básicos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Ajustes para dispositivos móveis */
+/* Responsividade: Estilo para telas menores */
+@media (max-width: 800px) {
+  /* Container principal */
+  .checkout-container {
+    flex-direction: column;
+    padding: 10px;
+    gap: 15px;
+    min-height: auto;
+  }
+
+  /* Resumo do carrinho e formulário de pagamento */
+  .cart-summary, .payment-form {
+    margin-right: 0;
+    padding: 10px;
+    width: 100%; /* Ajusta a largura para ocupar a tela toda */
+  }
+
+  /* Imagem do produto */
+  .product-imagee {
+    width: 80px; /* Reduz a imagem para caber melhor na tela pequena */
+    height: 80px;
+    margin-right: 10px;
+  }
+
+  /* Lista de produtos */
+  .products-container {
+    max-height: 300px; /* Reduz a altura para se ajustar em telas menores */
+    padding-right: 5px;
+    overflow-y: auto; /* Habilita rolagem vertical, se necessário */
+  }
+
+  /* Botão de ação */
+  .btn {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  /* Título */
+  .title {
+    font-size: 16px;
+    text-align: center; /* Centraliza para melhor apresentação em telas pequenas */
+  }
+
+  /* Campo de entrada */
+  .input-box input {
+    padding: 8px;
+    font-size: 14px; /* Ajusta o tamanho da fonte para melhorar a legibilidade */
+  }
+
+  /* Produto no carrinho */
+  .product-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Nome do produto */
+  .product-namee {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  /* Preço e parcelas */
+  .product-pricee, .product-installmentss {
+    font-size: 12px;
+  }
+
+  /* Notas de segurança */
+  .security-notes p {
+    font-size: 12px;
+  }
+}
+
+
+.cart-summary {
+  background-color: var(--dark-primary-color);
+  color: #ffffff;
+  flex: 1;
+  margin-right: 10pxs;
+  padding: 25px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Evita overflow para não cortar o conteúdo */
+}
+
+.cart-summary h3 {
+  text-align: center;
+  margin-top: 2px; /* Pequeno espaçamento abaixo do título */
+}
+
+/* Seção do formulário de pagamento */
+.payment-form {
+  flex: 1;
+  padding: 25px;
+  border-radius: 8px;
+  background-color: gray;
+  box-shadow: 0 2px 8px rgba(80, 79, 79, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+
+.products-container {
+  display: flex;
+  flex-direction: column; /* Organiza os itens em coluna */
+  gap: 20px; /* Espaçamento entre os itens */
+  margin-top: 10px; /* Espaçamento entre o título e os produtos */
+  max-height: 500px; /* Altura máxima com rolagem */
+  overflow-y: auto; /* Habilita rolagem vertical, se necessário */
+  padding-right: 10px;
+}
+
+/* Customização da barra de rolagem para Webkit (Chrome/Safari) */
+.products-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.products-container::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.products-container::-webkit-scrollbar-thumb:hover {
+  background-color: #888;
+}
+
+/* Item do produto */
+.product-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background: #00315f;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagem do produto */
+.product-imagee {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  margin-right: 15px;
+  border-radius: 8px;
+}
+
+/* Detalhes do produto */
+.product-details {
+  flex: 1;
+}
+
+.product-namee {
+  text-align: 0px;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.product-pricee {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.product-installmentss {
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+}
+
+/* Botão de remoção do produto */
+.remove-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.remove-btn:hover {
+  color: #ff4040;
+}
+
+/* Total do carrinho */
+.cart-total {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 20px;
+  color: rgb(253, 253, 253);
+}
+
+/* Notas de segurança */
+.security-notes {
+  margin-top: 20px;
+}
+
+.security-notes p {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Formulário de pagamento */
+form {
+  width: 100%; /* Ajusta a largura do formulário */
+  padding: 2px;
+}
+
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex: 1;
+  min-width: 300px;
+}
+
+.title {
+  font-size: 20px;
+  color: #333;
+  text-transform: uppercase;
+  margin-bottom: 1px;
+}
+
+.input-box {
+  margin: 15px 0;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.flex {
+  display: flex;
+  gap: 15px;
+}
+
+.column img {
+  height: 40px;
+  filter: drop-shadow(0 0 1px #000000);
+  align-items: auto;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  background: green;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  font-size: 17px;
+  color: #fff;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.btn:hover {
+  background: rgb(21, 255, 0);
+}
