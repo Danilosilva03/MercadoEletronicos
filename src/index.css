@@ -297,7 +297,7 @@ nav ul li:hover {
     
     .menu-button {
         position: absolute; /* Fica fixo dentro da .nav */
-        left: 64%; /* Alinha ao lado direito do menu */
+        left: 66%; /* Alinha ao lado direito do menu */
         top: 50%; /* Centraliza verticalmente */
         transform: translateY(-50%); /* Ajuste fino para centralizar */
         z-index: 1000; /* Mantém acima de outros elementos */
@@ -336,11 +336,15 @@ nav ul li:hover {
         object-fit: contain !important;
     }
     
+    .section-title {
+        padding-bottom: 1rem !important;
+        margin: -5rem !important;
+        margin-bottom: 1rem !important; /* Espaço abaixo do título */
+    }
+    
     .section-title h3 {
-        text-align: center;
-        font-size: 1.8rem;
-        margin-top: -50px !important;
-        margin-bottom: 20px !important; /* Espaço abaixo do título */
+        text-align: center !important;
+        font-size: 1.8rem !important;
     }
 
       /* Nome do produto */
@@ -578,16 +582,16 @@ nav ul li:hover {
     }
     
     header .inner-content {
-        display: flex; /* Usa flexbox para organizar o layout */
-        flex-direction: column; /* Alinha elementos verticalmente */
-        gap: 1.5rem; /* Espaçamento entre elementos */
-        padding: 1.5rem 1rem; /* Ajuste de padding interno */
+        display: flex !important; /* Usa flexbox para organizar o layout */
+        flex-direction: column !important; /* Alinha elementos verticalmente */
+        gap: 1.5rem !important; /* Espaçamento entre elementos */
+        padding: 1.5rem 1rem !important; /* Ajuste de padding interno */
     }
     
     header .left-side h1 {
-        color: hsl(0, 0%, 100%);
+        color: hsl(100, 18%, 93%);
         font-size: 3.0rem;
-        margin-top: 50px;
+        margin-top: 70px !important;
       }
 
     header .right-side img {
