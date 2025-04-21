@@ -1,6 +1,7 @@
+// src/CompraCerta.js
 import React from 'react';
 
-export default function CompraCerta() {
+function CompraCerta() {
   return (
     <div style={{ padding: '2rem', textAlign: 'center' }}>
       <h1>✅ Compra realizada com sucesso!</h1>
@@ -8,3 +9,5 @@ export default function CompraCerta() {
     </div>
   );
 }
+
+export default CompraCerta;

@@ -1,6 +1,7 @@
+// src/CompraErrada.js
 import React from 'react';
 
-export default function CompraErrada() {
+function CompraErrada() {
   return (
     <div style={{ padding: '2rem', textAlign: 'center', color: 'red' }}>
       <h1>❌ Algo deu errado na sua compra.</h1>
@@ -8,3 +9,5 @@ export default function CompraErrada() {
     </div>
   );
 }
+
+export default CompraErrada;

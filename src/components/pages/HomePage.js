@@ -11,7 +11,7 @@ export default function HomePage({ products, addProductToCart }) {
       
       <div className="page-inner-content">
            <div className="section-title">
-                <h3>Lanches e Nossas Ofertas</h3>
+                <h3>Lanches e Ofertas</h3>
                 <div className="underline"></div>
           </div>
 

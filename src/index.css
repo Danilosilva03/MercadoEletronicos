@@ -289,7 +289,7 @@ nav ul li:hover {
     html, body {
         overflow-x: hidden;
     }
-    
+
     .nav {
         position: fixed;
         width: 100%; /* Ocupa toda a largura da tela */
@@ -467,7 +467,7 @@ nav ul li:hover {
     font-size: 1.7rem;
     cursor: pointer;
     border: none;
-    margin-top: 50px !important;
+    margin-top: 30px !important;
     transform: translateX(-90px) !important; /* Move os botões de + e - */
 }
 
@@ -477,7 +477,7 @@ nav ul li:hover {
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 0.4rem;
-    margin-top: 70px !important;
+    margin-top: 50px !important;
     transform: translateX(-90px) !important; /* Move a imagem 10px para a esquerda */
 }
 .sidebar-cart .sidebar-product img {
@@ -565,6 +565,8 @@ nav ul li:hover {
         font-size: 1.2rem !important;
         font-weight: bold !important;
     }
+
+
  /* hedader */
     .header-background img {
         position: absolute; 
@@ -608,6 +610,14 @@ nav ul li:hover {
         margin: 0.5rem 0; /* Espaçamento acima e abaixo */
         text-align: center !important; /* Centraliza o texto */
         transform: translateX(-50px) !important; /* Move os botões de + e - */
+    }
+
+      /* Logo Footer*/
+      .logo-footer p {
+        font-size: 1.9rem; /* Define o tamanho do texto */
+        margin: 0.5rem 0; /* Espaçamento acima e abaixo */
+        text-align: center !important; /* Centraliza o texto */
+        transform: translateX(-15px) !important; /* Move os botões de + e - */
     }
     
     

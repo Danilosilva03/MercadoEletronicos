@@ -84,6 +84,11 @@ export default function FormPagamento({ cartTotal, selectedProducts = [] }) {
     setIsSubmitting(false);
   };
 
+  const handlePagamento = (linkPagamento) => {
+    // Redireciona o usuário para o Mercado Pago
+    window.location.href = linkPagamento;  // 'linkPagamento' é a URL de pagamento obtida do backend
+  };
+
   return (
     <div className="checkout-container">
       <div className="cart-summary">

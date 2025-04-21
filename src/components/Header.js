@@ -33,8 +33,7 @@ export default function Header() {
         {/* Conteúdo à esquerda */}
         <div className="left-side">
           <div className="hero-container" data-aos="fade-in">
-            <h1>Alcance Todas as suas Metas em um só Lugar</h1>
-
+            <h1>Sabor que conquista cada lanche é uma Novidade!</h1>
             {/* Barra de Pesquisa */}
             <div className="search-container">
               <input type="text" placeholder="Buscar produtos..."/>
