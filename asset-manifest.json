@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/LojaBurguers/static/css/main.ede283bd.css",
-    "main.js": "/LojaBurguers/static/js/main.cad0a7e0.js",
+    "main.css": "/LojaBurguers/static/css/main.63ecd443.css",
+    "main.js": "/LojaBurguers/static/js/main.664c526f.js",
     "index.html": "/LojaBurguers/index.html",
-    "main.ede283bd.css.map": "/LojaBurguers/static/css/main.ede283bd.css.map",
-    "main.cad0a7e0.js.map": "/LojaBurguers/static/js/main.cad0a7e0.js.map"
+    "main.63ecd443.css.map": "/LojaBurguers/static/css/main.63ecd443.css.map",
+    "main.664c526f.js.map": "/LojaBurguers/static/js/main.664c526f.js.map"
   },
   "entrypoints": [
-    "static/css/main.ede283bd.css",
-    "static/js/main.cad0a7e0.js"
+    "static/css/main.63ecd443.css",
+    "static/js/main.664c526f.js"
   ]
 }
