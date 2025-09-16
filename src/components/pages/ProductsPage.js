@@ -5,7 +5,7 @@ export default function ProductsPage({ products, addProductToCart }) {
   return (
     <div className="page-inner-content">
       <div className="section-titlee">
-        <h3>Nossos Lanches</h3>
+        <h3>Produto e Ofertas</h3>
         <div className="underline"></div>
       </div>
       

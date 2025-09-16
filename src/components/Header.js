@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Typed from 'typed.js';
 
 export default function Header() {
- /* useEffect(() => {
+/*  useEffect(() => {
     const typedOptions = {
       strings: [
         '<span class="color1">Atendimento</span> <span class="color2">Exclusivo</span>',
@@ -26,14 +26,14 @@ export default function Header() {
     <header>
       {/* Imagem principal de fundo */}
       <div className="header-background">
-        <img src={`${process.env.PUBLIC_URL}/imagens/products/papel2.png`} alt="featured-products-image" />
+        <img src={`${process.env.PUBLIC_URL}/imagens/products/papel1.png`} alt="featured-products-image" />
       </div>
 
       <div className="inner-content">
         {/* Conteúdo à esquerda */}
         <div className="left-side">
           <div className="hero-container" data-aos="fade-in">
-            <h1>Sabor que conquista cada lanche é uma Novidade!</h1>
+            <h1>Tecnologia que conecta você ao futuro!</h1>
             {/* Barra de Pesquisa */}
             <div className="search-container">
               <input type="text" placeholder="Buscar produtos..."/>
@@ -51,10 +51,10 @@ export default function Header() {
           </p>
         </div>
 
-        {/* Imagem do lado direito 
+        {/* Imagem do lado direito */}
         <div className="right-side">
           <img src={`${process.env.PUBLIC_URL}/imagens/plano3.png`} alt="Product" />
-        </div> */}
+        </div> 
       </div>
     </header>
   );

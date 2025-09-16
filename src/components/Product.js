@@ -16,28 +16,19 @@ export default function Product({
 }) {
   const navigate = useNavigate();
 
-  // Função para formatar preços corretamente
-  const parsePrice = (priceString) => {
-    if (typeof priceString !== 'string') return 0;
-    const parsed = parseFloat(priceString.replace('R$', '').replace(/\./g, '').replace(',', '.'));
-    return isNaN(parsed) ? 0 : parsed;
-  };
-
   const formatToBRL = (value) => {
-    return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    return value?.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    });
   };
 
-  const parsedPrice = parsePrice(price);
-  const parsedOriginalPrice = originalPrice ? parsePrice(originalPrice) : null;
-  const parsedInstallmentPrice = installmentPrice ? parsePrice(installmentPrice) : null;
-
-  const formattedPrice = formatToBRL(parsedPrice);
-  const formattedOriginalPrice = parsedOriginalPrice ? formatToBRL(parsedOriginalPrice) : null;
-  const formattedInstallmentPrice = parsedInstallmentPrice ? formatToBRL(parsedInstallmentPrice) : null;
+  const formattedPrice = formatToBRL(price);
+  const formattedOriginalPrice = originalPrice ? formatToBRL(originalPrice) : null;
+  const formattedInstallmentPrice = installmentPrice ? formatToBRL(installmentPrice / maxInstallments) : null;
 
   const ratingStars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
 
-  // Adiciona ao carrinho e redireciona para o checkout
   const handleBuyNow = () => {
     addProductToCart({ id, name, price, image });
 

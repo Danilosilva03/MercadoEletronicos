@@ -6,10 +6,9 @@ import HomePage from './components/pages/HomePage';
 import ProductsPage from './components/pages/ProductsPage';
 import SidebarCart from './components/SidebarCart';
 import FormPagamento from './components/FormPagamento';
-import CompraCerta from './components/pages/Compracerta';     // 👈 Certo
-import CompraErrada from './components/pages/CompraErrada';   // 👈 Certo
+import CompraCerta from './CompraCerta';     // NOVO
+import CompraErrada from './CompraErrada';   // NOVO
 import './App.css';
-
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -86,11 +85,11 @@ function App() {
   }, []);
 
   return (
-    <Router basename="/LojaBurguers">
+    <Router basename="/MercadoEletronicos">
       <div className="App">
         <Navbar selectedProducts={selectedProducts} setShowSidebarCart={setShowSidebarCart} />
 
-        <SidebarCart 
+        <SidebarCart
           addToCartTotal={addToCartTotal}
           removeProductFromCart={removeProductFromCart}
           cartTotal={cartTotal}
@@ -98,22 +97,36 @@ function App() {
           setSelectedProducts={setSelectedProducts}
           setShowSidebarCart={setShowSidebarCart}
           showSidebarCart={showSidebarCart}
-          setCartTotal={setCartTotal} 
+          setCartTotal={setCartTotal}
         />
 
         <main>
           <Routes>
-            <Route 
-              path="/" 
-              element={<HomePage addToCartTotal={addToCartTotal} removeProductFromCart={removeProductFromCart} selectedProducts={selectedProducts} addProductToCart={addProductToCart} products={products} setShowSidebarCart={setShowSidebarCart} showSidebarCart={showSidebarCart} cartTotal={cartTotal} />} 
+            <Route
+              path="/"
+              element={
+                <HomePage
+                  addToCartTotal={addToCartTotal}
+                  removeProductFromCart={removeProductFromCart}
+                  selectedProducts={selectedProducts}
+                  addProductToCart={addProductToCart}
+                  products={products}
+                  setShowSidebarCart={setShowSidebarCart}
+                  showSidebarCart={showSidebarCart}
+                  cartTotal={cartTotal}
+                />
+              }
             />
-            <Route 
-              path="/products" 
-              element={<ProductsPage products={products} addProductToCart={addProductToCart} />} 
-            />
+            <Route path="/products" element={<ProductsPage products={products} addProductToCart={addProductToCart} />} />
             <Route
               path="/checkout"
-              element={<FormPagamento cartTotal={cartTotal} selectedProducts={selectedProducts} onRemoveProduct={removeProductFromCart} />}
+              element={
+                <FormPagamento
+                  cartTotal={cartTotal}
+                  selectedProducts={selectedProducts}
+                  onRemoveProduct={removeProductFromCart}
+                />
+              }
             />
             <Route path="/compracerta" element={<CompraCerta />} />
             <Route path="/compraerrada" element={<CompraErrada />} />

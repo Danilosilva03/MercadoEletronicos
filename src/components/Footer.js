@@ -46,14 +46,14 @@ export default function Footer() {
             <p>Baixe o nosso aplicativo  <br></br>
              Baixe o nosso aplicativo para Android e iOS</p>
             <div>
-            <img src={`${process.env.PUBLIC_URL}/imagens/app-store.png`} alt="App Store download" />
+              <img src={`${process.env.PUBLIC_URL}/imagens/app-store.png`} alt="App Store download" />
               <img src={`${process.env.PUBLIC_URL}/imagens/play-store.png`} alt="Play Store download" />
             </div>
           </div>
 
           <div className="logo-footer">
             <h1 className="logoo">
-            Nordeste<span>Burguer</span>
+            Mercado<span>Eletronico</span>
             </h1>
             <p>Tudo o que você precisa chegará até você.</p>
           </div>

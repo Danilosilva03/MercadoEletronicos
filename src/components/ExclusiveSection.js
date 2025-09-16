@@ -11,19 +11,20 @@ export default function ExclusiveSection( addProductToCart) {
       <div className="page-inner-content">
         <div className="content">
           <div className="left-side">
-            <h2>"Lanche perfeito: crocante por fora, recheado de alegria por dentro!"
-            ! </h2> 
+            <h2>"Performance, inovação e conectividade em um só lugar"
+             </h2> 
             <p>
-            "Bem-vindo ao nosso encontro de sabores! 
-            Que cada mordida seja uma explosão de felicidade e que esse lanche torne seu dia ainda mais especial!"
+            Trabalhe, jogue e se conecte com o que há de mais moderno em tecnologia móvel. 
+            Celulares com alto desempenho, câmeras avançadas e baterias duradouras. 
+            Qualidade e garantia, direto pra você.
             </p>
             <Link to="products" className="see-more-btnn">
               <span>Ver Agora</span>
               <FontAwesomeIcon icon={faChevronRight} />
             </Link>
            </div>
-           <div className="right-sidee">
-           <img src={`${process.env.PUBLIC_URL}/imagens/products/papel.jpg`} alt="Smart Band" />
+           <div className="right-sidee1">
+           <img src={`${process.env.PUBLIC_URL}/imagens/products/iphones.webp`} alt="Smart Band" />
            </div>
         </div>
       </div>

@@ -17,7 +17,7 @@ export default function Navbar({ setShowSidebarCart, selectedProducts }) {
       <div className="nav">
          <div className="inner-content">
             <h1 className="logo">
-               Nordeste<span>Burguer</span>
+               Mercado<span>Eletronico</span>
             </h1>
 
              {/* Botão de menu para telas pequenas */}
@@ -33,8 +33,8 @@ export default function Navbar({ setShowSidebarCart, selectedProducts }) {
                <ul>
                   <h1>Burguer<span> Menu</span></h1>
                   <li onClick={() => handleNavigation("/")}>Começo</li>
-                  <li onClick={() => handleNavigation("/products")}>Lanches</li>
-                  <li onClick={() => handleNavigation("/products")}>Bebidas</li>
+                  <li onClick={() => handleNavigation("/products")}>Produtos</li>
+                  <li onClick={() => handleNavigation("/products")}>Eletronico</li>
                   <li onClick={() => handleNavigation("/contact")}>Contato</li>
                </ul>
             </div>
@@ -43,8 +43,8 @@ export default function Navbar({ setShowSidebarCart, selectedProducts }) {
             <nav>
                <ul>
                   <li onClick={() => handleNavigation("/")}>Começo</li>
-                  <li onClick={() => handleNavigation("/products")}>Lanches</li>
-                  <li onClick={() => handleNavigation("/products")}>bebidas</li>
+                  <li onClick={() => handleNavigation("/products")}>Produtos</li>
+                  <li onClick={() => handleNavigation("/products")}>Eletronico</li>
                   <li onClick={() => handleNavigation("/contact")}>Contato</li>
                </ul>
             </nav>

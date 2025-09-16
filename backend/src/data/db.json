@@ -1,0 +1,164 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Big Smash",
+      "image": "imagens/products/lanche4.jpg",
+      "price": 20.00,
+      "originalPrice": 24.99,
+      "installmentPrice": 250.00,
+      "maxInstallments": 10,
+      "rating": 4
+    },
+    {
+      "id": 2,
+      "name": "Cheese Max",
+      "image": "imagens/products/lanche5.jpg",
+      "price": 25.00,
+      "originalPrice": 27.00,
+      "installmentPrice": 150.00,
+      "maxInstallments": 10,
+      "rating": 4
+    },
+    {
+      "id": 3,
+      "name": "DoubleX Camarão",
+      "image": "imagens/products/lanche6.webp",
+      "price": 20.00,
+      "originalPrice": 23.00,
+      "installmentPrice": 40.00,
+      "maxInstallments": 10,
+      "rating": 4
+    },
+    {
+      "id": 4,
+      "name": "2 Bacon King",
+      "image": "imagens/products/lanche7.jpg",
+      "price": 35.00,
+      "originalPrice": 39.99,
+      "installmentPrice": 300.00,
+      "maxInstallments": 10,
+      "rating": 4
+    },
+    {
+      "id": 5,
+      "name": "Super Burge",
+      "image": "imagens/products/lanche8.jpg",
+      "price": 40.00,
+      "originalPrice": 44.00,
+      "installmentPrice": 48.00,
+      "maxInstallments": 10,
+      "rating": 4
+    },
+    {
+      "id": 6,
+      "name": "Smash Melt",
+      "image": "imagens/products/lanche9.jpg",
+      "price": 45.00,
+      "originalPrice": 52.99,
+      "installmentPrice": 100.00,
+      "maxInstallments": 10,
+      "rating": 4
+    },
+    {
+      "id": 7,
+      "name": "TurboX",
+      "image": "imagens/products/lanche10.jpg",
+      "price": 50.00,
+      "originalPrice": 53.00,
+      "installmentPrice": 250.00,
+      "maxInstallments": 10,
+      "rating": 4
+    },
+    {
+      "id": 8,
+      "name": "MonsterX",
+      "image": "imagens/products/lanche11.jpg",
+      "price": 35.00,
+      "originalPrice": 40.00,
+      "installmentPrice": 50.00,
+      "maxInstallments": 10,
+      "rating": 4
+    },
+    {
+      "id": 9,
+      "name": "Grill Burg X",
+      "image": "imagens/products/lanche15.png",
+      "price": 22.00,
+      "originalPrice": 25.00,
+      "installmentPrice": 350.00,
+      "maxInstallments": 10,
+      "rating": 4
+    },
+    {
+      "id": 10,
+      "name": "Cheddar Boom",
+      "image": "imagens/products/lanche12.png",
+      "price": 25.00,
+      "originalPrice": 27.99,
+      "installmentPrice": 250.00,
+      "maxInstallments": 10,
+      "rating": 4
+    },
+    {
+      "id": 11,
+      "name": "SupremeX",
+      "image": "imagens/products/lanche13.png",
+      "price": 23.00,
+      "originalPrice": 25.00,
+      "installmentPrice": 250.00,
+      "maxInstallments": 10,
+      "rating": 4
+    },
+    {
+      "id": 12,
+      "name": "Tower Burg",
+      "image": "imagens/products/lanche14.png",
+      "price": 20.00,
+      "originalPrice": 23.00,
+      "installmentPrice": 150.00,
+      "maxInstallments": 10,
+      "rating": 4
+    },
+    {
+      "id": 13,
+      "name": "Guaraná 2L",
+      "image": "imagens/products/refri2.webp",
+      "price": 10.00,
+      "originalPrice": 12.00,
+      "installmentPrice": 700.00,
+      "maxInstallments": 10,
+      "rating": 4
+    },
+    {
+      "id": 14,
+      "name": "Coca Cola 2L",
+      "image": "imagens/products/refri3.webp",
+      "price": 10.00,
+      "originalPrice": 12.00,
+      "installmentPrice": 285.00,
+      "maxInstallments": 10,
+      "rating": 4
+    },
+    {
+      "id": 15,
+      "name": "Pepsi 2L",
+      "image": "imagens/products/refri1.png",
+      "price": 10.00,
+      "originalPrice": 12.00,
+      "installmentPrice": 285.00,
+      "maxInstallments": 10,
+      "rating": 4
+    },
+    {
+      "id": 16,
+      "name": "Fanta Laranja 2L",
+      "image": "imagens/products/refri4.webp",
+      "price": 10.00,
+      "originalPrice": 12.00,
+      "installmentPrice": 285.00,
+      "maxInstallments": 10,
+      "rating": 4
+    }
+  ]
+}

@@ -1,11 +1,14 @@
 "use client";
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoneyBill, faUserShield, faClipboard } from '@fortawesome/free-solid-svg-icons';
+import { faUserShield, faClipboard } from '@fortawesome/free-solid-svg-icons';
 import { db } from '../firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
+import { FaMoneyBillAlt, FaRegCreditCard, FaBoxOpen } from 'react-icons/fa'
 
 const formatCurrency = (value) => {
   return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -13,8 +16,8 @@ const formatCurrency = (value) => {
 
 export default function FormPagamento({ cartTotal, selectedProducts = [] }) {
   const [formData, setFormData] = useState({
-    nome: '', email: '', endereco: '', cidade: '', estado: '', telefone: '', cep: '',
-    nomeCartao: '', numeroCartao: '', mesExpiracao: '', anoExpiracao: '', cvv: ''
+    nome: '', telefone: '', cep: '',
+    endereco: '', numero: '', bairro: '', cidade: '', estado: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -26,16 +29,18 @@ export default function FormPagamento({ cartTotal, selectedProducts = [] }) {
   };
 
   const buscarEnderecoPorCEP = async (cep) => {
+    if (!cep || cep.replace(/\D/g, '').length !== 8) return;
     try {
-      const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+      const response = await fetch(`https://viacep.com.br/ws/${cep.replace(/\D/g, '')}/json/`);
       const data = await response.json();
 
       if (!data.erro) {
         setFormData(prevData => ({
           ...prevData,
-          endereco: data.logradouro,
-          cidade: data.localidade,
-          estado: data.uf
+          endereco: data.logradouro || '',
+          bairro: data.bairro || '',
+          cidade: data.localidade || '',
+          estado: data.uf || ''
         }));
       } else {
         alert("CEP não encontrado.");
@@ -50,8 +55,17 @@ export default function FormPagamento({ cartTotal, selectedProducts = [] }) {
     e.preventDefault();
     setIsSubmitting(true);
 
-    if (Object.values(formData).includes('') || selectedProducts.length === 0) {
-      alert('Preencha todos os campos e adicione produtos ao carrinho.');
+    const camposObrigatorios = [
+      'nome', 'telefone', 'cep',
+      'endereco', 'numero', 'bairro', 'cidade', 'estado'
+    ];
+
+    const todosPreenchidos = camposObrigatorios.every(
+      campo => formData[campo] && formData[campo].trim() !== ''
+    );
+
+    if (!todosPreenchidos || selectedProducts.length === 0) {
+      alert('Preencha todos os campos obrigatórios e adicione produtos ao carrinho.');
       setIsSubmitting(false);
       navigate('/compraerrada');
       return;
@@ -62,31 +76,50 @@ export default function FormPagamento({ cartTotal, selectedProducts = [] }) {
       total: cartTotal,
       produtos: selectedProducts.map(produto => ({
         id: produto.id,
-        nome: produto.name,
-        preco: produto.price,
-        quantidade: produto.quantity,
-      }))
+        name: produto.name,
+        price: produto.price,
+        quantity: produto.quantity,
+      })),
+      criadoEm: new Date().toISOString()
     };
 
     try {
       await addDoc(collection(db, 'orders'), orderData);
-      setFormData({
-        nome: '', email: '', endereco: '', cidade: '', estado: '', telefone: '', cep: '',
-        nomeCartao: '', numeroCartao: '', mesExpiracao: '', anoExpiracao: '', cvv: ''
+
+      const response = await fetch("http://127.0.0.1:5000/api/pagamento", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ produtos: orderData.produtos })
       });
-      navigate('/compracerta');
+
+      const data = await response.json();
+
+      if (data.link_pagamento) {
+        window.location.href = data.link_pagamento;
+      } else {
+        alert("Erro ao gerar link de pagamento");
+        navigate('/compraerrada');
+      }
+
+      setFormData({
+        nome: '', telefone: '', cep: '',
+        endereco: '', numero: '', bairro: '', cidade: '', estado: ''
+      });
     } catch (error) {
-      console.error('Erro ao salvar pedido:', error);
+      console.error('Erro ao processar pedido:', error);
       alert('Erro ao processar o pedido. Tente novamente.');
       navigate('/compraerrada');
     }
-
     setIsSubmitting(false);
   };
 
-  const handlePagamento = (linkPagamento) => {
-    // Redireciona o usuário para o Mercado Pago
-    window.location.href = linkPagamento;  // 'linkPagamento' é a URL de pagamento obtida do backend
+  const formatCurrency = (value) => {
+    if (typeof value !== 'number' || isNaN(value)) return 'R$ 0,00';
+
+    return value.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    });
   };
 
   return (
@@ -97,11 +130,39 @@ export default function FormPagamento({ cartTotal, selectedProducts = [] }) {
           {selectedProducts.length > 0 ? (
             selectedProducts.map(produto => (
               <div key={produto.id} className="product-item">
-                <img src={produto.image} alt={produto.name} className="product-imagee" />
+                <Zoom>
+                  <img
+                    src={`${process.env.PUBLIC_URL}/${produto.image}`}
+                    alt={produto.name}
+                    className='product-imagee'
+                  />
+                </Zoom>
+
                 <div className="product-details">
-                  <p className="product-namee">{produto.name}</p>
-                  <p className="product-pricee"><b>Preço:</b> {formatCurrency(produto.price)}</p>
-                  <p className="product-installmentss">Parcelas: {produto.maxInstallments}x</p>
+                  {/* Nome do produto */}
+                  <p className="product-namee">
+                    <FaBoxOpen /> {produto.name}
+                  </p>
+
+                  {/* Avaliação (estrelas) */}
+                  <p className="product-rating">
+                    {"★".repeat(produto.rating)}{"☆".repeat(5 - produto.rating)}
+                  </p>
+
+                  {/* Preço atual */}
+                  <p className="product-pricee">
+                    <FaMoneyBillAlt /> <strong>Preço:</strong> {formatCurrency(produto.price)}
+                  </p>
+
+                  {/* Parcelas */}
+                  <p className="product-installmentss">
+                    <FaRegCreditCard /> Parcelas: {produto.maxInstallments || 12}x sem juros
+                  </p>
+
+                  {/* Descrição */}
+                  <p className="product-description">
+                    <b>Descrição:</b> {produto.description || '📲 Garanta já o seu – Unidades Limitadas!!'}
+                  </p>
                 </div>
               </div>
             ))
@@ -110,18 +171,17 @@ export default function FormPagamento({ cartTotal, selectedProducts = [] }) {
           )}
         </div>
         <div className="cart-total">
-          <h3>Valor Total: {formatCurrency(cartTotal)}</h3>
+          <h3>Soma Valor Total: {formatCurrency(cartTotal)}</h3>
         </div>
       </div>
 
       <div className="payment-form">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} noValidate>
           <div className="row">
             <div className="column">
               <h3 className="title">Dados de Entrega</h3>
 
-              {/* Nome, Email, Telefone */}
-              {['nome', 'email', 'telefone'].map(campo => (
+              {['nome', 'telefone'].map(campo => (
                 <div key={campo} className="input-box">
                   <label htmlFor={campo}>{campo.charAt(0).toUpperCase() + campo.slice(1)}:</label>
                   <input
@@ -135,7 +195,6 @@ export default function FormPagamento({ cartTotal, selectedProducts = [] }) {
                 </div>
               ))}
 
-              {/* CEP */}
               <div className="input-box">
                 <label htmlFor="cep">CEP:</label>
                 <input
@@ -149,8 +208,7 @@ export default function FormPagamento({ cartTotal, selectedProducts = [] }) {
                 />
               </div>
 
-              {/* Endereço, Cidade, Estado */}
-              {['endereco', 'cidade', 'estado'].map(campo => (
+              {['endereco', 'numero', 'bairro', 'cidade', 'estado'].map(campo => (
                 <div key={campo} className="input-box">
                   <label htmlFor={campo}>{campo.charAt(0).toUpperCase() + campo.slice(1)}:</label>
                   <input
@@ -164,77 +222,50 @@ export default function FormPagamento({ cartTotal, selectedProducts = [] }) {
                 </div>
               ))}
 
-              <div className="security-notes">
+             {/*  <div className="security-notes">
                 <p><FontAwesomeIcon icon={faUserShield} /> Garantindo que sua informação esteja segura.</p>
-                <p><FontAwesomeIcon icon={faClipboard} /> Cobrança como <b>PG*BANK</b>.</p>
-              </div>
+                <p><FontAwesomeIcon icon={faClipboard} /> Pagamento com <b>BC*MercadoPago</b>.</p>
+              </div> */}
+
+              <button
+                type="submit"
+                className="btn"
+                disabled={isSubmitting}
+                style={{ marginTop: '10px', backgroundColor: '#006400', color: '#fff' }}
+              >
+                {isSubmitting ? 'Processando...' : 'Finalizar Pedido'}
+              </button>
             </div>
 
-            <div className="column">
-              <h3 className="title">Pagamento</h3>
-              <img src={`${process.env.PUBLIC_URL}/imagens/barra.png`} alt="Cartões Aceitos" />
+            <div className="checkout-column">
+              <b className="secure-message">
+                🔒 Segurança de Dados <br />
+                Por favor, preencha suas informações corretamente para garantir a segurança e o sucesso da operação.
+              </b>
 
-              {/* Nome do Cartão e Número */}
-              {['nomeCartao', 'numeroCartao'].map(campo => (
-                <div key={campo} className="input-box">
-                  <label htmlFor={campo}>{campo.charAt(0).toUpperCase() + campo.slice(1)}:</label>
-                  <input
-                    type="text"
-                    id={campo}
-                    name={campo}
-                    value={formData[campo]}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-              ))}
+              <div className="logo-footer11">
+                <h1 className="logoo11">
+                  Formulario<span> De Entrega</span>
+                </h1>
+                <p>Tudo o que você precisa chegará até você.</p>
+                <img
+                  src={`${process.env.PUBLIC_URL}/imagens/MercadoPago.webp`}
+                  alt="products"
+                  className="headerI"
+                />
+              </div>
 
-              {/* Expiração e CVV */}
-              <div className="flex-row">
-                <div className="input-box">
-                  <label htmlFor="mesExpiracao">Mês Exp.:</label>
-                  <input
-                    type="number"
-                    id="mesExpiracao"
-                    name="mesExpiracao"
-                    placeholder="MM"
-                    min="01"
-                    max="12"
-                    value={formData.mesExpiracao}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="input-box">
-                  <label htmlFor="anoExpiracao">Ano Exp.:</label>
-                  <input
-                    type="number"
-                    id="anoExpiracao"
-                    name="anoExpiracao"
-                    placeholder="YYYY"
-                    min="2024"
-                    value={formData.anoExpiracao}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="input-box">
-                  <label htmlFor="cvv">CVV:</label>
-                  <input
-                    type="text"
-                    id="cvv"
-                    name="cvv"
-                    placeholder="123"
-                    value={formData.cvv}
-                    onChange={handleChange}
-                    required
+              <div className="download-options11">
+                <b>
+                  "Tecnologia de segurança certificada para proteger você do início ao fim da compra."<br />
+                </b>
+                <div className="app-images">
+                  <img
+                    src={`${process.env.PUBLIC_URL}/imagens/barra.png`}
+                    alt="App Store download"
                   />
                 </div>
               </div>
-
-              <button type="submit" className="btn" disabled={isSubmitting}>
-                {isSubmitting ? 'Processando...' : 'Pagar Agora'} <FontAwesomeIcon icon={faMoneyBill} />
-              </button>
             </div>
           </div>
         </form>

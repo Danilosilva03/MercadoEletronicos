@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/LojaBurguers/static/css/main.f20c13f6.css",
-    "main.js": "/LojaBurguers/static/js/main.664c526f.js",
-    "index.html": "/LojaBurguers/index.html",
-    "main.f20c13f6.css.map": "/LojaBurguers/static/css/main.f20c13f6.css.map",
-    "main.664c526f.js.map": "/LojaBurguers/static/js/main.664c526f.js.map"
+    "main.css": "/MercadoEletronicos/static/css/main.6d626b1f.css",
+    "main.js": "/MercadoEletronicos/static/js/main.66c52ae1.js",
+    "index.html": "/MercadoEletronicos/index.html",
+    "main.6d626b1f.css.map": "/MercadoEletronicos/static/css/main.6d626b1f.css.map",
+    "main.66c52ae1.js.map": "/MercadoEletronicos/static/js/main.66c52ae1.js.map"
   },
   "entrypoints": [
-    "static/css/main.f20c13f6.css",
-    "static/js/main.664c526f.js"
+    "static/css/main.6d626b1f.css",
+    "static/js/main.66c52ae1.js"
   ]
 }
