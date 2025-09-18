@@ -51,7 +51,7 @@
     "gh-pages": "^6.3.0",
     "webpack": "^4.42.0"
   },
-  "homepage": "https://danilosilva03.github.io/MercadoEletronicos",
+  "homepage": ".",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Danilosilva03/MercadoEletronicos.git"
