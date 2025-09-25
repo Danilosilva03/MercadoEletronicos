@@ -20,9 +20,9 @@ def gerar_link_pagamento(produtos_escolhidos):
     payment_data = {
         "items": items,
         "back_urls": {
-            "success": "http://localhost:3000/LojaBurguers/compracerta",
-            "pending": "http://localhost:3000/LojaBurguers/compraerrada",
-            "failure": "http://localhost:3000/LojaBurguers/compraerrada"
+            "success": "http://localhost:3000/MercadoEletronicos/compracerta",
+            "pending": "http://localhost:3000/MercadoEletronicos/compraerrada",
+            "failure": "http://localhost:3000/MercadoEletronicos/compraerrada"
         },
     }
     result = sdk.preference().create(payment_data)

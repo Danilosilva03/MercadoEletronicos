@@ -97,7 +97,10 @@ export default function SidebarCart({
             <SidebarProduct
               key={product.id}
               id={product.id}
-              name={product.name}
+              name={
+                <span style={{ fontSize: "22px", marginBottom: "-30px", display: "flex" }}>
+                  {product.name}
+                </span>} 
               image={product.image}
               price={product.price}
               quantity={product.quantity}

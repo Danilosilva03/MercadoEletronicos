@@ -31,7 +31,7 @@ export default function Navbar({ setShowSidebarCart, selectedProducts }) {
             {/* Menu lateral (exibido apenas em telas pequenas) */}
             <div className={`mobile-menu ${showMenu ? "show" : ""}`}>
                <ul>
-                  <h1>Burguer<span> Menu</span></h1>
+                  <h1>Mercado<span> Menu</span></h1>
                   <li onClick={() => handleNavigation("/")}>Começo</li>
                   <li onClick={() => handleNavigation("/products")}>Produtos</li>
                   <li onClick={() => handleNavigation("/products")}>Eletronico</li>
