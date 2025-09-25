@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/MercadoEletronicos/static/css/main.6d626b1f.css",
-    "main.js": "/MercadoEletronicos/static/js/main.66c52ae1.js",
+    "main.css": "/MercadoEletronicos/static/css/main.9f0d983f.css",
+    "main.js": "/MercadoEletronicos/static/js/main.58e2b905.js",
     "index.html": "/MercadoEletronicos/index.html",
-    "main.6d626b1f.css.map": "/MercadoEletronicos/static/css/main.6d626b1f.css.map",
-    "main.66c52ae1.js.map": "/MercadoEletronicos/static/js/main.66c52ae1.js.map"
+    "main.9f0d983f.css.map": "/MercadoEletronicos/static/css/main.9f0d983f.css.map",
+    "main.58e2b905.js.map": "/MercadoEletronicos/static/js/main.58e2b905.js.map"
   },
   "entrypoints": [
-    "static/css/main.6d626b1f.css",
-    "static/js/main.66c52ae1.js"
+    "static/css/main.9f0d983f.css",
+    "static/js/main.58e2b905.js"
   ]
 }
